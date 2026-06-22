@@ -1,0 +1,4 @@
+import type { Metadata } from "next";
+import { LegalPage } from "@/components/legal-page";
+export const metadata: Metadata = { title: "Mentions légales", robots: { index: false } };
+export default function Page(){return <LegalPage eyebrow="Informations légales" title="Mentions légales"><p><strong>Version provisoire — ne pas publier sans validation.</strong></p><h2>Éditeur</h2><p>ELITRIX EXPERTS — forme sociale, capital, adresse complète, SIREN et coordonnées à renseigner.</p><h2>Profession réglementée</h2><p>Informations relatives à l’inscription à l’Ordre des experts-comptables, région et numéro à confirmer par le cabinet.</p><h2>Hébergement</h2><p>Hébergeur, adresse et coordonnées à renseigner après choix définitif de la plateforme.</p><h2>Responsabilité</h2><p>Les informations du site sont générales et ne remplacent pas une analyse personnalisée ni une mission formalisée.</p></LegalPage>}
