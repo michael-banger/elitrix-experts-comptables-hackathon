@@ -1,4 +1,4 @@
-# ELITRIX EXPERTS — Site V1
+# ELITRIX EXPERTS : Site V1
 
 Espace de travail dédié au hackathon ELITRIX EXPERTS, séparé des autres workflows.
 

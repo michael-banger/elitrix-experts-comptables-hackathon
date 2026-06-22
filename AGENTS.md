@@ -1,4 +1,4 @@
-# Consignes agents — ELITRIX EXPERTS
+# Consignes agents : ELITRIX EXPERTS
 
 ## Workflow Git
 

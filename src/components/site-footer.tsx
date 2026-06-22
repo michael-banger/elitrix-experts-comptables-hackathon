@@ -14,7 +14,7 @@ export function SiteFooter() {
           <div><h3>Ressources</h3><Link href="/guide-forme-juridique-2026">Guide 2026</Link><Link href="/ressources">Bibliothèque</Link><Link href="/rendez-vous">Premier échange</Link></div>
           <div><h3>Informations</h3><Link href="/mentions-legales">Mentions légales</Link><Link href="/confidentialite">Confidentialité</Link><Link href="/cookies">Cookies</Link></div>
         </div>
-        <div className="footer-bottom">© 2026 ELITRIX EXPERTS — Informations générales, sous réserve d’une analyse personnalisée.</div>
+        <div className="footer-bottom">© 2026 ELITRIX EXPERTS. Informations générales, sous réserve d’une analyse personnalisée.</div>
       </div>
     </footer>
   );
