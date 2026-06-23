@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
+import type { CSSProperties } from "react";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, Compass, MapPin, ShieldCheck } from "lucide-react";
+import { ArrowRight, BriefcaseBusiness, Building2, ChartNoAxesCombined, Handshake, Stethoscope, UserRound } from "lucide-react";
 import { FinalCta } from "@/components/final-cta";
 import { SectionHeading } from "@/components/section-heading";
 import { personas, services } from "@/lib/content";
@@ -16,24 +17,62 @@ const faqs = [
   ["Pourquoi parler de facturation électronique dès maintenant ?", "Parce qu’elle concerne les outils, les habitudes de facturation et la qualité des données. Anticiper permet de préparer une transition plus lisible."],
 ] as const;
 
+const heroAudiences = [
+  { label: "TPE / PME", detail: "Dirigeants", icon: BriefcaseBusiness },
+  { label: "Indépendants", detail: "Freelances", icon: UserRound },
+  { label: "Professions", detail: "libérales", icon: Stethoscope },
+  { label: "Associations", detail: "& Fondations", icon: Handshake },
+  { label: "CSE", detail: "Comités d’entreprise", icon: Building2 },
+] as const;
+
 export default function HomePage() {
   const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqs.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })) };
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <section className="hero">
+        <div className="hero-architecture" aria-hidden="true">
+          <svg viewBox="0 0 760 260" preserveAspectRatio="none">
+            <path d="M20 230h720M76 230V116l52-40 52 40v114M112 230v-70h32v70M210 230V96h74v134M222 118h50M222 146h50M222 174h50M330 230V82h116v148M350 116h76M350 148h76M350 180h76M500 230V104l62-44 62 44v126M536 230v-78h52v78M655 230V136h58v94" />
+            <path d="M72 116h112M496 104h132M328 82h120" />
+          </svg>
+        </div>
         <div className="container hero-grid">
-          <div>
-            <span className="eyebrow">Expertise comptable & conseil stratégique</span>
-            <h1 className="display">Comptabilité, fiscalité et pilotage pour dirigeants qui veulent décider avec clarté</h1>
-            <p className="hero-copy">ELITRIX EXPERTS accompagne créateurs, indépendants, dirigeants de TPE/PME, professions libérales, associations et CSE à Saint-Cyr-l’École, Versailles, dans les Yvelines et à distance.</p>
-            <div className="hero-actions"><Link className="btn btn-primary" href="/guide-forme-juridique-2026">Télécharger le guide <ArrowRight size={17} /></Link><Link className="btn btn-light" href="/rendez-vous">Prendre rendez-vous</Link></div>
-            <div className="trust-row"><span><ShieldCheck size={15} /> Experte-comptable inscrite à l’Ordre</span><span><MapPin size={15} /> Saint-Cyr-l’École / Versailles</span><span><CheckCircle2 size={15} /> Pennylane</span><span><Compass size={15} /> Accompagnement digital</span></div>
+          <div className="hero-content">
+            <span className="eyebrow">EXPERTISE COMPTABLE & CONSEIL</span>
+            <h1 className="display">Pilotez. Décidez. Développez.</h1>
+            <p className="hero-copy">Nous transformons vos données en décisions éclairées pour sécuriser votre conformité et accélérer votre croissance.</p>
+            <div className="hero-actions">
+              <Link className="btn btn-primary hero-primary" href="/services">Découvrir nos services <ArrowRight size={19} /></Link>
+              <Link className="btn btn-light hero-secondary" href="/rendez-vous">Prendre rendez-vous</Link>
+            </div>
           </div>
-          <div className="hero-viz" aria-label="Visualisation illustrative de pilotage financier">
-            <div className="chart-grid" /><div className="chart-line"><svg viewBox="0 0 400 240" role="img" aria-label="Courbes de progression indicatives"><polyline fill="none" stroke="#91a4bf" strokeWidth="3" points="0,210 55,170 105,184 165,115 220,130 282,78 340,90 400,25"/><polyline fill="none" stroke="#2563eb" strokeWidth="4" points="0,228 55,212 105,193 165,178 220,121 282,132 340,70 400,48"/></svg></div>
-            <div className="metric metric-a"><small>Vision</small><strong>Trésorerie</strong></div><div className="metric metric-b"><small>Pilotage</small><strong>Décisions éclairées</strong></div>
+          <div className="hero-visual" aria-label="Visualisation illustrative de pilotage financier">
+            <div className="visual-grid" aria-hidden="true" />
+            <div className="glass-panel glass-panel-left" aria-hidden="true" />
+            <div className="glass-panel glass-panel-right" aria-hidden="true" />
+            <div className="visual-platform" aria-hidden="true" />
+            <div className="bar-field" aria-hidden="true">
+              {[42, 62, 86, 118, 154, 198, 242].map((height, index) => <span key={height} style={{ "--bar-height": `${height}px`, "--bar-index": index } as CSSProperties} />)}
+            </div>
+            <svg className="dashboard-lines" viewBox="0 0 560 330" role="img" aria-label="Courbes de progression indicatives">
+              <polyline className="line-white" points="18,248 70,218 118,224 168,188 216,152 266,160 320,112 374,78" />
+              <polyline className="line-blue" points="205,270 250,258 296,235 338,198 380,195 424,150 470,132 520,78" />
+              {[18,70,118,168,216,266,320,374].map((x, index) => <circle className="dot-white" key={`white-${x}`} cx={x} cy={[248,218,224,188,152,160,112,78][index]} r="7" />)}
+              {[205,250,296,338,380,424,470,520].map((x, index) => <circle className="dot-blue" key={`blue-${x}`} cx={x} cy={[270,258,235,198,195,150,132,78][index]} r="7" />)}
+              {[70,168,266,374,424,520].map((x, index) => <line className="vertical-guide" key={`guide-${x}`} x1={x} x2={x} y1={[218,188,160,78,150,78][index]} y2="306" />)}
+            </svg>
+            <div className="visual-metric metric-top"><ChartNoAxesCombined size={18} /><span>Décisions éclairées</span></div>
+            <div className="visual-metric metric-bottom"><span>Conformité & pilotage</span></div>
           </div>
+        </div>
+        <div className="container hero-audience" aria-label="Publics accompagnés">
+          {heroAudiences.map(({ label, detail, icon: Icon }) => (
+            <div className="audience-item" key={`${label}-${detail}`}>
+              <Icon size={34} aria-hidden="true" />
+              <span><strong>{label}</strong><small>{detail}</small></span>
+            </div>
+          ))}
         </div>
       </section>
 
