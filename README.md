@@ -36,6 +36,16 @@ Avancer proprement sur:
 
 Site éditorial et tunnel d’acquisition pédagogique réalisés avec Next.js 16, TypeScript et Tailwind CSS 4. L’identité reprend les couleurs exactes de la planche de marque : Bleu Profond `#0A1A2F`, Bleu Encre `#101F3D`, Bleu Signal `#2563EB`, Cyan Clair `#06B6D4`, Gris Ardoise `#64748B`, Gris Brume `#E6EAF0` et Blanc Perle `#F7F8FA`.
 
+Les fichiers du site sont dans ce dépôt à la racine :
+
+- `src/app/` : pages App Router, sitemap, robots et pages légales.
+- `src/components/` : header, footer, formulaire simulé, blocs éditoriaux.
+- `src/lib/` : configuration d’URL publique.
+- `.github/workflows/pages.yml` : déploiement GitHub Pages.
+- `next.config.ts` : export statique conditionnel pour GitHub Pages.
+
+Le dossier de brief local `STRATEGIE/SUPPORT WEB/` et la planche source de palette ne sont pas inclus dans ce dépôt GitHub. La palette validée est déjà reportée dans le design system du site et dans les styles CSS.
+
 ### Installation et lancement local
 
 ```bash
@@ -53,7 +63,37 @@ pnpm start
 
 ### Déploiement
 
-Recommandation : importer le dépôt dans Vercel, conserver le preset Next.js et la commande `pnpm build`. Avant le passage en production, remplacer le domaine temporaire dans les métadonnées, `sitemap.ts` et `robots.ts`, puis compléter toutes les mentions juridiques.
+Option retenue pour la V1 : GitHub Pages, car le site est statique et ne dépend d’aucune API serveur réelle.
+
+URL publique attendue :
+https://michael-banger.github.io/elitrix-experts-comptables-hackathon/
+
+Le workflow `.github/workflows/pages.yml` se déclenche à chaque push sur `main` et exécute :
+
+```bash
+pnpm install --frozen-lockfile
+pnpm lint
+pnpm build:github
+```
+
+La commande `pnpm build:github` active `GITHUB_PAGES=true`, définit l’URL publique du dépôt et génère l’export statique dans `out/`.
+
+Configuration GitHub nécessaire :
+
+1. Aller dans `Settings` puis `Pages`.
+2. Choisir `GitHub Actions` comme source de build et déploiement.
+3. Vérifier que les Actions sont autorisées dans `Settings` puis `Actions`.
+4. Attendre la fin du workflow `Deploy site to GitHub Pages`.
+
+Si GitHub Pages ne peut pas être activé sur le compte ou le dépôt, l’alternative est Vercel :
+
+1. Importer le dépôt GitHub dans Vercel.
+2. Garder le preset Next.js.
+3. Build command : `pnpm build`.
+4. Output automatique Vercel, ne pas utiliser `pnpm build:github`.
+5. Ne connecter aucun compte Brevo, Calendly, Notion ou analytics tant que la démo hackathon doit rester simulée.
+
+Avant une publication commerciale réelle, remplacer l’URL GitHub Pages par le domaine définitif dans `NEXT_PUBLIC_SITE_URL`, valider les mentions légales et compléter les coordonnées exactes.
 
 ## Parcours de démonstration
 
@@ -96,3 +136,10 @@ Le wording évite les comparaisons, garanties et promesses de résultat. L’acc
 ## Statut
 
 V1 fonctionnelle sur la branche `feature/site-v1`. Les intégrations externes restent volontairement simulées.
+
+Workflow branches recommandé :
+
+- `main` : version stable publiée.
+- `feature/site-v1` : branche de livraison V1.
+- `feature/<sujet>` : branches courtes pour les ajustements d’équipe.
+- Pull request vers `main` pour relire les modifications avant publication.

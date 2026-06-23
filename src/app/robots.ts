@@ -1,2 +1,11 @@
 import type { MetadataRoute } from "next";
-export default function robots(): MetadataRoute.Robots { return { rules: { userAgent: "*", allow: "/", disallow: ["/merci"] }, sitemap: "https://elitrix-experts.fr/sitemap.xml" }; }
+import { siteUrl } from "@/lib/site-url";
+
+export const dynamic = "force-static";
+
+export default function robots(): MetadataRoute.Robots {
+  return {
+    rules: { userAgent: "*", allow: "/", disallow: ["/merci"] },
+    sitemap: `${siteUrl}/sitemap.xml`,
+  };
+}
