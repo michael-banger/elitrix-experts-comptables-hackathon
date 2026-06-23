@@ -63,12 +63,24 @@ pnpm start
 
 ### Déploiement
 
-Option retenue pour la V1 : GitHub Pages, car le site est statique et ne dépend d’aucune API serveur réelle.
+Déploiement actif pour la V1 : Vercel, afin de fournir immédiatement une URL publique stable pendant le hackathon.
 
-URL publique attendue :
+URL publique active :
+https://elitrix-experts-comptables-hackatho.vercel.app/
+
+Projet Vercel :
+
+- Team : `michael-bangers-projects`
+- Projet : `elitrix-experts-comptables-hackathon`
+- Build command : `pnpm build`
+- Les intégrations Brevo, Calendly, Notion et analytics restent simulées.
+
+GitHub Pages reste possible, car le site supporte l’export statique. Le workflow `.github/workflows/pages.yml` est conservé en déclenchement manuel pour éviter des échecs automatiques tant que Pages n’est pas activé dans les settings du dépôt.
+
+URL GitHub Pages prévue après activation :
 https://michael-banger.github.io/elitrix-experts-comptables-hackathon/
 
-Le workflow `.github/workflows/pages.yml` se déclenche à chaque push sur `main` et exécute :
+Le workflow GitHub Pages exécute :
 
 ```bash
 pnpm install --frozen-lockfile
