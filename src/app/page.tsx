@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import type { CSSProperties } from "react";
+import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, BriefcaseBusiness, Building2, ChartNoAxesCombined, Handshake, Stethoscope, UserRound } from "lucide-react";
+import { ArrowRight, BriefcaseBusiness, Building2, Handshake, Stethoscope, UserRound } from "lucide-react";
 import { FinalCta } from "@/components/final-cta";
 import { SectionHeading } from "@/components/section-heading";
 import { personas, services } from "@/lib/content";
@@ -40,30 +40,22 @@ export default function HomePage() {
         <div className="container hero-grid">
           <div className="hero-content">
             <span className="eyebrow">EXPERTISE COMPTABLE & CONSEIL</span>
-            <h1 className="display">Pilotez. Décidez. Développez.</h1>
+            <h1 className="display">Pilotez. Décidez.<br />Développez.</h1>
             <p className="hero-copy">Nous transformons vos données en décisions éclairées pour sécuriser votre conformité et accélérer votre croissance.</p>
             <div className="hero-actions">
               <Link className="btn btn-primary hero-primary" href="/services">Découvrir nos services <ArrowRight size={19} /></Link>
               <Link className="btn btn-light hero-secondary" href="/rendez-vous">Prendre rendez-vous</Link>
             </div>
           </div>
-          <div className="hero-visual" aria-label="Visualisation illustrative de pilotage financier">
-            <div className="visual-grid" aria-hidden="true" />
-            <div className="glass-panel glass-panel-left" aria-hidden="true" />
-            <div className="glass-panel glass-panel-right" aria-hidden="true" />
-            <div className="visual-platform" aria-hidden="true" />
-            <div className="bar-field" aria-hidden="true">
-              {[42, 62, 86, 118, 154, 198, 242].map((height, index) => <span key={height} style={{ "--bar-height": `${height}px`, "--bar-index": index } as CSSProperties} />)}
-            </div>
-            <svg className="dashboard-lines" viewBox="0 0 560 330" role="img" aria-label="Courbes de progression indicatives">
-              <polyline className="line-white" points="18,248 70,218 118,224 168,188 216,152 266,160 320,112 374,78" />
-              <polyline className="line-blue" points="205,270 250,258 296,235 338,198 380,195 424,150 470,132 520,78" />
-              {[18,70,118,168,216,266,320,374].map((x, index) => <circle className="dot-white" key={`white-${x}`} cx={x} cy={[248,218,224,188,152,160,112,78][index]} r="7" />)}
-              {[205,250,296,338,380,424,470,520].map((x, index) => <circle className="dot-blue" key={`blue-${x}`} cx={x} cy={[270,258,235,198,195,150,132,78][index]} r="7" />)}
-              {[70,168,266,374,424,520].map((x, index) => <line className="vertical-guide" key={`guide-${x}`} x1={x} x2={x} y1={[218,188,160,78,150,78][index]} y2="306" />)}
-            </svg>
-            <div className="visual-metric metric-top"><ChartNoAxesCombined size={18} /><span>Décisions éclairées</span></div>
-            <div className="visual-metric metric-bottom"><span>Conformité & pilotage</span></div>
+          <div className="hero-visual" aria-label="Visualisation illustrative de pilotage financier et stratégique">
+            <Image
+              className="hero-dashboard-image"
+              src="/assets/hero-dashboard-versailles.png"
+              alt="Illustration financière avec graphiques, panneaux de données et architecture versaillaise"
+              width={740}
+              height={562}
+              priority
+            />
           </div>
         </div>
         <div className="container hero-audience" aria-label="Publics accompagnés">
