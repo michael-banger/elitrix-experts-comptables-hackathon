@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, BriefcaseBusiness, Building2, Handshake, Stethoscope, UserRound } from "lucide-react";
 import { FinalCta } from "@/components/final-cta";
@@ -25,6 +24,102 @@ const heroAudiences = [
   { label: "CSE", detail: "Comités d’entreprise", icon: Building2 },
 ] as const;
 
+function HeroFinancialVisual() {
+  return (
+    <svg
+      className="hero-financial-visual"
+      viewBox="0 0 760 560"
+      role="img"
+      aria-labelledby="hero-financial-title hero-financial-desc"
+    >
+      <title id="hero-financial-title">Visualisation de pilotage financier</title>
+      <desc id="hero-financial-desc">Graphiques de croissance, panneaux de données translucides et architecture institutionnelle en arrière-plan.</desc>
+      <defs>
+        <linearGradient id="heroPanel" x1="0" x2="1" y1="0" y2="1">
+          <stop offset="0%" stopColor="#eff6ff" stopOpacity=".48" />
+          <stop offset="45%" stopColor="#58708d" stopOpacity=".28" />
+          <stop offset="100%" stopColor="#0c2345" stopOpacity=".06" />
+        </linearGradient>
+        <linearGradient id="heroPanelTall" x1="0" x2=".9" y1=".05" y2="1">
+          <stop offset="0%" stopColor="#2f5f9a" stopOpacity=".28" />
+          <stop offset="52%" stopColor="#1d3d67" stopOpacity=".23" />
+          <stop offset="100%" stopColor="#07172d" stopOpacity=".07" />
+        </linearGradient>
+        <linearGradient id="heroBase" x1=".05" x2=".95" y1=".2" y2="1">
+          <stop offset="0%" stopColor="#f8fbff" stopOpacity=".78" />
+          <stop offset="46%" stopColor="#91a7bd" stopOpacity=".42" />
+          <stop offset="100%" stopColor="#11294b" stopOpacity=".1" />
+        </linearGradient>
+        <linearGradient id="heroBlue" x1="0" x2="1" y1="1" y2="0">
+          <stop offset="0%" stopColor="#0b66ff" />
+          <stop offset="100%" stopColor="#2495ff" />
+        </linearGradient>
+        <filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%">
+          <feGaussianBlur stdDeviation="12" result="blur" />
+          <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.05 0 0 0 0 0.35 0 0 0 0 1 0 0 0 .55 0" />
+          <feBlend in="SourceGraphic" />
+        </filter>
+        <filter id="glassShadow" x="-20%" y="-20%" width="140%" height="150%">
+          <feDropShadow dx="0" dy="24" stdDeviation="28" floodColor="#000915" floodOpacity=".45" />
+        </filter>
+      </defs>
+
+      <g className="visual-grid" opacity=".34">
+        {Array.from({ length: 8 }).map((_, index) => <path key={`v-${index}`} d={`M${122 + index * 78} 94V482`} />)}
+        {Array.from({ length: 5 }).map((_, index) => <path key={`h-${index}`} d={`M92 ${124 + index * 72}H724`} />)}
+      </g>
+
+      <g className="visual-building" aria-hidden="true">
+        <path d="M76 413h606M104 413V282l62-45 62 45v131M126 272h80M142 413v-78h44v78M292 413V252l72-54 72 54v161M318 413V298h92v115M302 278h124M498 413V262l76-56 76 56v151M520 413v-92h38v92M588 413v-92h38v92M512 286h126" />
+        <path d="M148 320h14m22 0h14M148 354h14m22 0h14M340 318h18m32 0h18M340 354h18m32 0h18M532 320h16m54 0h16M532 356h16m54 0h16" />
+        <path d="M152 237c8-26 20-38 36-36 12 2 20 10 24 24M348 198c10-30 26-45 48-42 15 3 26 13 32 30M560 208c12-35 30-52 54-48 18 3 31 16 38 38" />
+      </g>
+
+      <g filter="url(#glassShadow)">
+        <path className="visual-base" d="M151 455L281 405L684 419L567 503L118 487Z" />
+        <path className="visual-base-edge" d="M151 455L118 487L567 503L684 419" />
+      </g>
+
+      <g className="visual-bars">
+        {[230, 258, 286, 314, 342, 370, 398, 426, 454, 482, 510, 538].map((x, index) => {
+          const heights = [40, 58, 74, 98, 124, 148, 184, 218, 258, 296, 230, 160];
+          return <path key={x} d={`M${x} ${429 - heights[index]}L${x + 31} ${421 - heights[index]}V431L${x} 439Z`} />;
+        })}
+      </g>
+
+      <g className="visual-panels">
+        <path className="visual-panel panel-left" d="M252 393V178c0-17 13-29 30-25l175 38c15 3 25 16 25 32v208Z" />
+        <path className="visual-panel panel-right" d="M455 430V142c0-15 9-29 23-35l116-53c18-8 38 5 38 25v346Z" />
+        <path className="visual-panel-line" d="M252 393V178c0-17 13-29 30-25l175 38c15 3 25 16 25 32v208M455 430V142c0-15 9-29 23-35l116-53c18-8 38 5 38 25v346" />
+      </g>
+
+      <g className="visual-stems">
+        {[176, 222, 270, 318, 365, 414, 462].map((x, index) => {
+          const y = [369, 336, 344, 290, 250, 256, 190][index];
+          return <path key={`stem-white-${x}`} d={`M${x} 423V${y}`} />;
+        })}
+        {[382, 426, 474, 522, 568, 614].map((x, index) => {
+          const y = [393, 372, 328, 286, 238, 152][index];
+          return <path key={`stem-blue-${x}`} d={`M${x} 423V${y}`} />;
+        })}
+      </g>
+
+      <g className="visual-lines" filter="url(#softGlow)">
+        <path className="line-white" d="M176 369L222 336L270 344L318 290L365 250L414 256L462 190" />
+        <path className="line-blue" d="M382 393L426 372L474 328L522 286L568 238L614 152" />
+        {[176, 222, 270, 318, 365, 414, 462].map((x, index) => {
+          const y = [369, 336, 344, 290, 250, 256, 190][index];
+          return <circle className="dot-white" key={`dot-white-${x}`} cx={x} cy={y} r="8" />;
+        })}
+        {[382, 426, 474, 522, 568, 614].map((x, index) => {
+          const y = [393, 372, 328, 286, 238, 152][index];
+          return <circle className="dot-blue" key={`dot-blue-${x}`} cx={x} cy={y} r="8" />;
+        })}
+      </g>
+    </svg>
+  );
+}
+
 export default function HomePage() {
   const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqs.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })) };
   return (
@@ -48,14 +143,7 @@ export default function HomePage() {
             </div>
           </div>
           <div className="hero-visual" aria-label="Visualisation illustrative de pilotage financier et stratégique">
-            <Image
-              className="hero-dashboard-image"
-              src="/assets/hero-dashboard-versailles.png"
-              alt="Illustration financière avec graphiques, panneaux de données et architecture versaillaise"
-              width={740}
-              height={562}
-              priority
-            />
+            <HeroFinancialVisual />
           </div>
         </div>
         <div className="container hero-audience" aria-label="Publics accompagnés">
