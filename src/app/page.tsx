@@ -305,7 +305,7 @@ export default function HomePage() {
           <SectionHeading
             eyebrow="Preuves de confiance"
             title="Un accompagnement fondé sur la rigueur, la proximité et la clarté"
-            description="La confiance se construit par des repères concrets : une implantation locale, une méthode de suivi et une communication compréhensible."
+            description="La confiance se construit par des repères concrets avec une implantation locale, une méthode de suivi et une communication compréhensible."
           />
           <div className="premium-grid trust-grid">
             {trustPillars.map(({ title, text, icon: Icon }) => (
