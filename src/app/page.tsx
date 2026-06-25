@@ -272,6 +272,7 @@ export default function HomePage() {
               <span className="eyebrow">Ressource gratuite</span>
               <h2 className="title">Recevoir une checklist pour mieux préparer votre suivi comptable</h2>
               <p className="lede">La checklist dirigeant aide à organiser les documents, échéances et questions utiles avant un échange avec votre expert-comptable.</p>
+              <p className="resource-title">Checklist dirigeant{"\u00a0"}: les documents et échéances à anticiper pour un suivi comptable plus fluide</p>
               <ul className="check-list">
                 <li>Les documents à préparer.</li>
                 <li>Les échéances à ne pas oublier.</li>
@@ -309,7 +310,7 @@ export default function HomePage() {
           <div className="premium-grid trust-grid">
             {trustPillars.map(({ title, text, icon: Icon }) => (
               <article className="premium-card trust-card" key={title}>
-                <span className="icon-box icon-box-gold"><Icon size={20} aria-hidden="true" /></span>
+                <span className="icon-box icon-box-accent"><Icon size={20} aria-hidden="true" /></span>
                 <h3>{title}</h3>
                 <p>{text}</p>
               </article>

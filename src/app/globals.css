@@ -11,8 +11,8 @@
   --white: #ffffff;
   --line: #dce2ea;
   --navy: #0a1a2f;
-  --gold: #b68a3a;
-  --gold-soft: #f7f0e4;
+  --accent-blue: #2563eb;
+  --accent-blue-soft: #eef5ff;
   --bluegray: #5f6f83;
   --radius: 1rem;
 }
@@ -139,7 +139,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .premium-section + .premium-section { border-top: 1px solid rgba(10,26,47,.08); }
 .section-ruled { background: linear-gradient(180deg, #fff 0%, #fff 82%, #fbfcfd 100%); }
 .premium-section .split-heading { align-items: start; margin-bottom: 42px; }
-.premium-section .eyebrow { color: var(--gold); }
+.premium-section .eyebrow { color: var(--signal); }
 .premium-section .title { color: var(--navy); letter-spacing: 0; }
 .premium-section .lede { color: var(--bluegray); }
 .premium-grid { display: grid; gap: 18px; }
@@ -155,8 +155,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
 }
 .premium-card h3 { margin: 18px 0 9px; color: var(--navy); font-size: 1.12rem; line-height: 1.28; letter-spacing: 0; }
 .premium-card p { margin: 0; color: var(--bluegray); }
-.premium-card .icon-box { border-color: rgba(182,138,58,.32); color: var(--navy); background: var(--gold-soft); }
-.icon-box-gold { color: var(--gold) !important; }
+.premium-card .icon-box { border-color: rgba(37,99,235,.28); color: var(--signal); background: var(--accent-blue-soft); }
+.icon-box-accent { color: var(--signal) !important; }
 .btn-navy { border-color: var(--navy); background: var(--navy); box-shadow: 0 12px 28px rgba(10,26,47,.18); }
 .btn-navy:hover { background: #122847; }
 .btn-outline-navy { color: var(--navy); border-color: rgba(10,26,47,.28); background: #fff; }
@@ -174,7 +174,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .audience-row { display: grid; grid-template-columns: 42px 1fr; gap: 18px; padding: 30px; border-bottom: 1px solid rgba(10,26,47,.1); }
 .audience-row:nth-child(odd) { border-right: 1px solid rgba(10,26,47,.1); }
 .audience-row:nth-last-child(-n+2) { border-bottom: 0; }
-.audience-row > span { width: 18px; height: 18px; margin-top: 5px; border-radius: 50%; border: 5px solid var(--gold-soft); background: var(--gold); }
+.audience-row > span { width: 18px; height: 18px; margin-top: 5px; border-radius: 50%; border: 5px solid var(--accent-blue-soft); background: var(--signal); }
 .audience-row h3 { margin: 0 0 7px; color: var(--navy); font-size: 1.14rem; line-height: 1.25; letter-spacing: 0; }
 .audience-row p { margin: 0; color: var(--bluegray); }
 .timeline { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; border: 1px solid rgba(10,26,47,.12); border-radius: 8px; overflow: hidden; background: #fff; }
@@ -192,12 +192,13 @@ button, a { -webkit-tap-highlight-color: transparent; }
   border-radius: 8px;
   padding: clamp(30px, 4.5vw, 58px);
   background:
-    linear-gradient(90deg, rgba(246,240,228,.72), transparent 38%),
+    linear-gradient(90deg, rgba(239,246,255,.86), transparent 38%),
     #fff;
 }
 .check-list { display: grid; gap: 11px; margin: 28px 0 0; padding: 0; list-style: none; color: var(--navy); }
+.resource-title { max-width: 650px; margin: 20px 0 0; color: var(--navy); font-weight: 760; line-height: 1.55; }
 .check-list li { position: relative; padding-left: 28px; }
-.check-list li::before { content: ""; position: absolute; left: 0; top: .62em; width: 8px; height: 8px; border-radius: 50%; background: var(--gold); }
+.check-list li::before { content: ""; position: absolute; left: 0; top: .62em; width: 8px; height: 8px; border-radius: 50%; background: var(--signal); }
 .resource-form { display: grid; gap: 16px; border: 1px solid rgba(10,26,47,.12); border-radius: 8px; padding: 24px; background: #fff; box-shadow: 0 18px 40px rgba(10,26,47,.055); }
 .resource-form .btn { width: 100%; margin-top: 2px; }
 .form-note { margin: 0; color: var(--bluegray); font-size: .78rem; line-height: 1.55; }
@@ -211,7 +212,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   padding: clamp(34px, 5vw, 62px);
   text-align: center;
   background:
-    linear-gradient(180deg, rgba(247,240,228,.76), rgba(255,255,255,0) 54%),
+    linear-gradient(180deg, rgba(239,246,255,.86), rgba(255,255,255,0) 54%),
     #fff;
 }
 .final-rdv h2 { max-width: 780px; margin: 12px auto 0; color: var(--navy); font-size: clamp(2rem, 3.4vw, 3rem); line-height: 1.08; letter-spacing: 0; }
