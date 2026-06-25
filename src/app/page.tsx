@@ -1,19 +1,62 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, BriefcaseBusiness, Building2, Handshake, Stethoscope, UserRound } from "lucide-react";
-import { FinalCta } from "@/components/final-cta";
+import {
+  ArrowRight,
+  BookOpenCheck,
+  BriefcaseBusiness,
+  Building2,
+  Calculator,
+  ClipboardCheck,
+  Handshake,
+  Landmark,
+  LineChart,
+  MapPin,
+  ShieldCheck,
+  Stethoscope,
+  UserRound,
+  Users,
+} from "lucide-react";
 import { SectionHeading } from "@/components/section-heading";
-import { personas, services } from "@/lib/content";
 
 export const metadata: Metadata = { title: "Expert-comptable à Saint-Cyr-l’École et Versailles" };
 
 const faqs = [
-  ["Quand faut-il contacter un expert-comptable avant de créer son entreprise ?", "Dès que le modèle économique, le statut ou les premières dépenses commencent à se préciser. Un échange en amont aide à organiser les questions de TVA, rémunération, protection sociale et financement."],
-  ["Micro-entreprise, EURL ou SASU : comment commencer à comparer ?", "En partant de votre activité, de vos revenus visés, de vos charges, de votre besoin de protection et de vos projets. Il n’existe pas de statut universellement adapté."],
-  ["Le guide remplace-t-il un conseil personnalisé ?", "Non. Il permet de structurer votre réflexion, mais une décision doit tenir compte de votre situation personnelle et professionnelle."],
-  ["Peut-on travailler à distance avec ELITRIX EXPERTS ?", "Oui. Le cabinet accompagne localement dans les Yvelines et peut organiser une collaboration digitale à distance en France."],
-  ["Comment se passe le premier rendez-vous ?", "Il sert à comprendre votre contexte, vos obligations et les prochaines étapes possibles. Il ne constitue pas à lui seul une mission formalisée."],
-  ["Pourquoi parler de facturation électronique dès maintenant ?", "Parce qu’elle concerne les outils, les habitudes de facturation et la qualité des données. Anticiper permet de préparer une transition plus lisible."],
+  ["ELITRIX EXPERTS accompagne-t-il les créateurs d’entreprise ?", "Oui, le cabinet peut accompagner les créateurs dans la structuration de leurs premières obligations comptables, fiscales et administratives, selon leur situation."],
+  ["Le cabinet accompagne-t-il les entreprises déjà en activité ?", "Oui, l’accompagnement peut concerner la tenue, la révision, les déclarations, le suivi social et le pilotage de l’activité."],
+  ["Comment se déroule le premier rendez-vous ?", "Le premier échange permet de comprendre l’activité, les besoins, les échéances et les priorités avant de proposer un cadre d’accompagnement adapté."],
+  ["Puis-je être accompagné si mon entreprise n’est pas située à Versailles ou Saint-Cyr-l’École ?", "Le cabinet est basé localement, mais certains échanges peuvent être organisés à distance selon les modalités prévues par le cabinet."],
+  ["Quels documents préparer avant un premier échange ?", "Il est utile de préparer les informations sur votre activité, votre structure juridique, vos dernières déclarations ou documents comptables si vous en avez, ainsi que vos principales questions."],
+  ["Le cabinet peut-il m’aider à mieux suivre mon activité ?", "Oui, le cabinet peut aider à mettre en place des indicateurs et un suivi plus lisible, adaptés à la situation de l’entreprise."],
+] as const;
+
+const servicesOverview = [
+  { title: "Expertise comptable", text: "Tenue, révision, comptes annuels et obligations comptables suivies avec méthode.", icon: Calculator },
+  { title: "Fiscalité professionnelle", text: "Déclarations fiscales, échéances et structuration des obligations selon votre situation.", icon: Landmark },
+  { title: "Social & paie", text: "Bulletins de paie, déclarations sociales et accompagnement des obligations employeur.", icon: Users },
+  { title: "Création d’entreprise", text: "Choix de structure, formalités et premiers réflexes comptables et fiscaux.", icon: Building2 },
+  { title: "Pilotage & conseil", text: "Tableaux de bord, suivi d’activité et indicateurs utiles à la décision.", icon: LineChart },
+  { title: "Accompagnement dirigeant", text: "Organisation administrative, anticipation des échéances et échanges réguliers.", icon: Handshake },
+] as const;
+
+const audienceSegments = [
+  ["Créateurs d’entreprise", "Pour poser les bonnes bases comptables, fiscales et administratives."],
+  ["Dirigeants de TPE et PME", "Pour structurer le suivi comptable et anticiper les échéances."],
+  ["Indépendants et professions libérales", "Pour gagner en clarté sur les obligations et le pilotage de l’activité."],
+  ["Sociétés en croissance", "Pour disposer d’un accompagnement régulier et d’indicateurs fiables."],
+] as const;
+
+const processSteps = [
+  ["Premier échange", "Compréhension de votre activité, de votre situation et de vos priorités."],
+  ["Diagnostic de vos besoins", "Identification des obligations, échéances, points de vigilance et besoins de pilotage."],
+  ["Mise en place", "Organisation des échanges, collecte des pièces, outils, calendrier et responsabilités."],
+  ["Suivi régulier", "Points d’avancement, anticipation des échéances et ajustements selon l’évolution de l’activité."],
+] as const;
+
+const trustPillars = [
+  { title: "Proximité locale", text: "Un cabinet basé à Saint-Cyr-l’École, proche de Versailles et des dirigeants des Yvelines.", icon: MapPin },
+  { title: "Suivi structuré", text: "Une méthode de travail lisible, avec calendrier, priorités et points réguliers.", icon: ClipboardCheck },
+  { title: "Confidentialité", text: "Un traitement sérieux des données et documents confiés au cabinet.", icon: ShieldCheck },
+  { title: "Pédagogie", text: "Des explications claires pour mieux comprendre les obligations et les échéances.", icon: BookOpenCheck },
 ] as const;
 
 const heroAudiences = [
@@ -156,22 +199,152 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section"><div className="container"><SectionHeading eyebrow="Une relation qui commence par la clarté" title="Comprendre avant de s’engager" description="Un dirigeant a besoin d’informations utiles avant de contacter un cabinet. Le parcours relie donc contenu pédagogique, ressource pratique et rendez-vous volontaire, sans pression commerciale." /><div className="grid-3"><article className="card"><span className="pill">01 · Comprendre</span><h3>Rendre les enjeux lisibles</h3><p>Expliquer les obligations, les choix et les points de vigilance avec des mots concrets.</p></article><article className="card"><span className="pill">02 · Préparer</span><h3>Apporter une ressource utile</h3><p>Donner au prospect une base pour mieux formuler sa situation et ses questions.</p></article><article className="card"><span className="pill">03 · Échanger</span><h3>Laisser l’initiative au dirigeant</h3><p>Le rendez-vous vient après une action volontaire, dans un cadre sobre et conforme.</p></article></div></div></section>
+      <section className="section premium-section">
+        <div className="container">
+          <SectionHeading
+            eyebrow="Nos expertises"
+            title="Un accompagnement comptable structuré pour piloter votre activité avec sérénité"
+            description="ELITRIX EXPERTS accompagne les dirigeants sur leurs obligations comptables, fiscales, sociales et leurs besoins de pilotage, avec un cadre lisible et régulier."
+          />
+          <div className="premium-grid services-grid">
+            {servicesOverview.map(({ title, text, icon: Icon }) => (
+              <article className="premium-card service-card" key={title}>
+                <span className="icon-box"><Icon size={20} aria-hidden="true" /></span>
+                <h3>{title}</h3>
+                <p>{text}</p>
+              </article>
+            ))}
+          </div>
+          <div className="section-action">
+            <Link className="btn btn-primary btn-navy" href="/rendez-vous">Planifier un rendez-vous <ArrowRight size={17} /></Link>
+            <Link className="link link-navy" href="/services">Découvrir l’accompagnement <ArrowRight size={16} /></Link>
+          </div>
+        </div>
+      </section>
 
-      <section className="section soft-band"><div className="container"><SectionHeading eyebrow="Profils accompagnés" title="Des enjeux différents, une même exigence de lisibilité" description="Chaque accompagnement part du contexte réel de l’organisation, de son stade et de ses priorités." /><div className="grid-3">{personas.map(({ title, pain, angle, cta, href, icon: Icon }) => <article className="card" key={title}><span className="icon-box"><Icon size={20} /></span><h3>{title}</h3><p>{pain}</p><span className="pain">{angle}</span><br/><Link className="link" href={href}>{cta} <ArrowRight size={16} /></Link></article>)}</div></div></section>
+      <section className="section premium-section section-ruled">
+        <div className="container">
+          <SectionHeading
+            eyebrow="Pour qui ?"
+            title="Un cabinet pensé pour les dirigeants qui veulent avancer avec méthode"
+            description="L’accompagnement s’adresse aux professionnels qui ont besoin d’un suivi fiable, lisible et régulier, à Saint-Cyr-l’École, Versailles et dans les environs."
+          />
+          <div className="audience-list">
+            {audienceSegments.map(([title, text]) => (
+              <article className="audience-row" key={title}>
+                <span aria-hidden="true" />
+                <div>
+                  <h3>{title}</h3>
+                  <p>{text}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
 
-      <section className="section"><div className="container"><SectionHeading eyebrow="Expertise & outils" title="Du respect des obligations à la qualité des décisions" description="Une offre structurée autour de la conformité, de la fluidité des échanges et du pilotage." /><div className="grid-3">{services.map(({ title, text, icon: Icon }) => <article className="card" key={title}><span className="icon-box"><Icon size={20} /></span><h3>{title}</h3><p>{text}</p></article>)}</div><Link className="link" href="/services">Découvrir toutes les missions <ArrowRight size={16} /></Link></div></section>
+      <section className="section premium-section">
+        <div className="container">
+          <SectionHeading
+            eyebrow="Méthode"
+            title="Un parcours simple pour cadrer votre accompagnement"
+            description="Le premier contact sert à poser les bases, clarifier les priorités et construire un cadre de travail adapté à votre activité."
+          />
+          <div className="timeline">
+            {processSteps.map(([title, text], index) => (
+              <article className="timeline-step" key={title}>
+                <span className="timeline-number">{String(index + 1).padStart(2, "0")}</span>
+                <h3>{title}</h3>
+                <p>{text}</p>
+              </article>
+            ))}
+          </div>
+          <div className="section-action">
+            <Link className="btn btn-outline btn-outline-navy" href="/rendez-vous">Préparer mon premier échange</Link>
+          </div>
+        </div>
+      </section>
 
-      <section className="section soft-band"><div className="container grid-2" style={{ alignItems: "center" }}><div className="guide-cover"><span className="eyebrow">Guide pratique · édition 2026</span><h2>Choisir sa forme juridique</h2><p>Micro-entreprise · EI · EURL · SASU</p></div><div><span className="eyebrow">Ressource à télécharger</span><h2 className="title">Comparer les options avant de décider</h2><p className="lede">Un guide pédagogique pour créateurs, freelances et dirigeants de TPE : TVA, cotisations, rémunération, charges et bonnes questions à préparer.</p><div className="hero-actions"><Link className="btn btn-primary" href="/guide-forme-juridique-2026">Voir le guide <ArrowRight size={17} /></Link></div><p className="muted" style={{ marginTop: 22, fontSize: ".82rem" }}>Ce contenu est informatif et ne remplace pas une analyse personnalisée.</p></div></div></section>
+      <section className="section premium-section">
+        <div className="container">
+          <div className="lead-magnet">
+            <div>
+              <span className="eyebrow">Ressource gratuite</span>
+              <h2 className="title">Recevoir une checklist pour mieux préparer votre suivi comptable</h2>
+              <p className="lede">La checklist dirigeant aide à organiser les documents, échéances et questions utiles avant un échange avec votre expert-comptable.</p>
+              <ul className="check-list">
+                <li>Les documents à préparer.</li>
+                <li>Les échéances à ne pas oublier.</li>
+                <li>Les questions utiles à poser à son expert-comptable.</li>
+                <li>Les premiers indicateurs à suivre.</li>
+              </ul>
+            </div>
+            <form className="resource-form" aria-label="Recevoir la checklist dirigeant">
+              <div className="field">
+                <label htmlFor="resource-firstname">Prénom</label>
+                <input id="resource-firstname" name="firstname" autoComplete="given-name" />
+              </div>
+              <div className="field">
+                <label htmlFor="resource-email">Email</label>
+                <input id="resource-email" name="email" type="email" autoComplete="email" />
+              </div>
+              <div className="field">
+                <label htmlFor="resource-company">Entreprise</label>
+                <input id="resource-company" name="company" autoComplete="organization" />
+              </div>
+              <button className="btn btn-primary btn-navy" type="submit">Recevoir la checklist</button>
+              <p className="form-note">Vos informations sont utilisées uniquement pour vous transmettre la ressource et vous recontacter si vous en faites la demande.</p>
+            </form>
+          </div>
+        </div>
+      </section>
 
-      <section className="section"><div className="container"><SectionHeading eyebrow="Proximité & disponibilité" title="Ancré à Saint-Cyr-l’École, proche de Versailles, disponible à distance" description="Une présence locale réelle, complétée par des échanges digitaux pour accompagner les organisations des Yvelines et au-delà." /><div className="grid-3"><article className="card"><span className="pill">Implantation</span><h3>Saint-Cyr-l’École</h3><p>Le point d’ancrage du cabinet, au contact des entrepreneurs et structures du territoire.</p></article><article className="card"><span className="pill">Écosystème proche</span><h3>Versailles</h3><p>Une zone d’activité voisine pour des rendez-vous et accompagnements de proximité.</p></article><article className="card"><span className="pill">Couverture</span><h3>Yvelines & France</h3><p>Des missions organisées localement en Île-de-France ou à distance grâce aux outils digitaux.</p></article></div><Link className="link" href="/expert-comptable-yvelines">Découvrir l’implantation <ArrowRight size={16}/></Link></div></section>
+      <section className="section premium-section section-ruled">
+        <div className="container">
+          <SectionHeading
+            eyebrow="Preuves de confiance"
+            title="Un accompagnement fondé sur la rigueur, la proximité et la clarté"
+            description="La confiance se construit par des repères concrets : une implantation locale, une méthode de suivi et une communication compréhensible."
+          />
+          <div className="premium-grid trust-grid">
+            {trustPillars.map(({ title, text, icon: Icon }) => (
+              <article className="premium-card trust-card" key={title}>
+                <span className="icon-box icon-box-gold"><Icon size={20} aria-hidden="true" /></span>
+                <h3>{title}</h3>
+                <p>{text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
 
-      <section className="section dark-band"><div className="container"><SectionHeading eyebrow="Parcours d’acquisition" title="Un tunnel pédagogique, progressif et volontaire" description="Le contenu prépare la réflexion. L’automatisation ne démarre qu’après une demande explicite du visiteur." /><div className="flow">{[["01","Contenu utile"],["02","Guide"],["03","Email pédagogique"],["04","Rendez-vous"],["05","Suivi"]].map(([n,t])=><div className="flow-step" key={n}><small>{n}</small><strong>{t}</strong></div>)}</div><p style={{ marginTop: 22, color: "#9fafc2", fontSize: ".82rem" }}>Brevo, Calendly et le suivi Notion / Google Sheet sont simulés dans cette démonstration.</p></div></section>
+      <section className="section premium-section">
+        <div className="container faq-shell">
+          <span className="eyebrow">FAQ</span>
+          <h2 className="title">Questions fréquentes avant de nous confier votre comptabilité</h2>
+          <div className="faq premium-faq">
+            {faqs.map(([q, a]) => (
+              <details key={q}>
+                <summary>{q}</summary>
+                <p>{a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
 
-      <section className="section"><div className="container"><SectionHeading eyebrow="Cadre de communication" title="Informer avec sobriété, accompagner avec discernement" description="Pas de comparaison, pas de promesse garantie : les contenus donnent des repères et la décision reste fondée sur une analyse personnalisée." /><div className="grid-2"><article className="card"><h3>Ce que vous trouverez</h3><p>Des explications accessibles, des ressources pratiques et des points de vigilance adaptés à la vie de l’entreprise.</p></article><article className="card"><h3>Ce que ces contenus ne font pas</h3><p>Ils ne remplacent ni une lettre de mission, ni l’étude complète d’une situation fiscale, sociale, comptable ou juridique.</p></article></div></div></section>
-
-      <section className="section soft-band"><div className="container"><span className="eyebrow">Questions fréquentes</span><h2 className="title">Pour préparer la suite</h2><div className="faq">{faqs.map(([q,a])=><details key={q}><summary>{q}</summary><p>{a}</p></details>)}</div></div></section>
-      <FinalCta />
+      <section className="section-sm premium-section">
+        <div className="container final-rdv">
+          <span className="eyebrow">Rendez-vous</span>
+          <h2>Vous souhaitez structurer votre suivi comptable ?</h2>
+          <p>Échangeons sur votre situation, vos obligations et les priorités à traiter pour construire un accompagnement adapté à votre activité.</p>
+          <div className="hero-actions final-actions">
+            <Link className="btn btn-primary btn-navy" href="/rendez-vous">Planifier un rendez-vous <ArrowRight size={17} /></Link>
+            <Link className="btn btn-outline btn-outline-navy" href="/services">Découvrir nos expertises</Link>
+          </div>
+          <p className="local-note">Saint-Cyr-l’École · Versailles · Accompagnement des dirigeants et entreprises</p>
+        </div>
+      </section>
     </>
   );
 }
